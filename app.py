@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 # Load pre-trained TrOCR model
 processor = TrOCRProcessor.from_pretrained("microsoft/trocr-base-handwritten")
-model = VisionEncoderDecoderModel.from_pretrained("microsoft/trocr-base-handwritten")
+model = VisionEncoderDecoderModel.from_pretrained("microsoft/trocr-base-handwritten",use_fast=True)
 
 @app.route("/")
 def home():
