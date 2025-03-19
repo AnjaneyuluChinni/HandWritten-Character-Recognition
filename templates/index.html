@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📝 Handwritten OCR - Recognize Text Easily</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto+Slab:wght@400;700&display=swap');
+
+        /* Gradient Background with Red, Orange, Yellow, Neon Blue, Purple */
+        body {
+            background: linear-gradient(135deg, #00d4ff, #6f42c1); 
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #13131b; /* Dark Gray */
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(208, 35, 35, 0.2);
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            font-family: 'Roboto Slab', serif;
+            color: #ffc107; /* Yellow */
+        }
+
+        h1 span {
+            color: #ffffff;
+            background: #ea5570; /* Purple */
+            padding: 5px 10px;
+            border-radius: 8px;
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 400;
+            color: #d1d1d1;
+        }
+
+        .ocr-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .upload-box, .draw-box {
+            background: #ccb2da; /* Purple */
+            padding: 20px;
+            border-radius: 12px;
+            width: 45%;
+            box-shadow: 0px 3px 8px rgba(10, 10, 10, 0.836);
+        }
+
+        .upload-box input {
+            margin-bottom: 10px;
+            display: block;
+            color: #ffffff;
+        }
+
+        .preview img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        canvas {
+            background: #ffffff;
+            border-radius: 10px;
+            width: 100%;
+            height: 200px;
+            border: 2px solid #ff7f00;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .btn {
+            background: linear-gradient(90deg, #ff7f00, #ffc107); 
+            border: none;
+            padding: 10px;
+            width: 100%;
+            margin: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 8px;
+            color: #343a40;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background: linear-gradient(90deg, #00d4ff, #6f42c1); 
+            color: #ffffff;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .result h2 {
+            font-size: 22px;
+            font-family: 'Roboto Slab', serif;
+            color: #ffc107; /* Yellow */
+        }
+
+        #output {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+            background: #ff7f00; /* Orange */
+            padding: 10px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1> <span>📝 Handwritten Character Recognition</span></h1>
+        <p>Upload an image or draw a character to recognize handwritten text instantly.</p>
+
+        <div class="ocr-section">
+            <div class="upload-box">
+                <h2>📤 Upload Image</h2>
+                <input type="file" id="fileInput" accept="image/*">
+                <div class="preview">
+                    <img id="uploadedImage" src="" alt="Upload Preview">
+                </div>
+                <button class="btn" onclick="uploadImage()">📄 Recognize Text</button>
+            </div>
+
+            <div class="draw-box">
+                <h2>✏️ Draw Character</h2>
+                <canvas id="canvas"></canvas>
+                <div class="btn-group">
+                    <button class="btn" onclick="clearCanvas()">❌ Clear</button>
+                    <button class="btn" onclick="recognizeDrawing()">🔍 Recognize</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="result">
+            <h2>📜 Recognized Text:</h2>
+            <p id="output">Awaiting Input...</p>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
